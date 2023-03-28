@@ -44,7 +44,7 @@ If there is a problem, the `fail()` call will break the execution, so the `wait(
 
 See the [unit tests](src/waitGroup.test.ts) for more examples.
 
-See also the [API docs](api-docs-link).
+See also the [API docs](https://tombenke.github.io/ts-waitgroup/).
 
 ## Development
 
@@ -56,15 +56,13 @@ It uses the following tools:
 - Jest
 - [Taskfile](https://taskfile.dev/)
 
-## Commands
-
 ### Build
 
 To compile TypeScript code use the following command:
 
     task build
 
-This will create a "build" folder in which all the compiled JavaScript files appear.
+This will create a "dist" folder in which all the compiled JavaScript files appear.
 
 ### Run lint
 
@@ -89,3 +87,7 @@ Besides a human readable HTML report, a Cobertura report also available for GitL
 To remove the "build" and "coverage" folders you can run the clean command.
 
     task clean
+
+## License
+The code and documentation in this project are released under the [MIT License](LICENSE)
+
