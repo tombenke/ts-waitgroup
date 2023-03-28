@@ -80,7 +80,6 @@ To run these tests and generate coverage report, use this command:
     task test
 
 The generated coverage report can be found under the "coverage" folder.
-Besides a human readable HTML report, a Cobertura report also available for GitLab.
 
 ### Clean project
 

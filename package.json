@@ -1,6 +1,6 @@
 {
   "name": "@tombenke/ts-waitgroup",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "A WaitGroup waits for a collection of async functions to finish",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
