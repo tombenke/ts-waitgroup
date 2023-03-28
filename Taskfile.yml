@@ -1,0 +1,80 @@
+# https://taskfile.dev
+
+version: 3
+
+vars:
+  GIT_HOOKS_DIR:
+    sh: sh -c 'echo "$(pwd)/.git/hooks"'
+
+env:
+
+tasks:
+  default:
+    desc: Executes all the tests then build the binary.
+    cmds:
+      - task: lint
+      - task: test
+      - task: docs
+
+  format:
+    desc: Autoformat the source files
+    cmds:
+      - npm run format
+
+  test:
+    desc: Run all the tests.
+    cmds:
+      - task: format
+      - npm run test
+
+  # NOTE: needs manual starting and stopping the docker-compose.test
+  test_wo_dcup:
+    desc: Run all the tests without starting and stopping docker-compose.test
+    cmds:
+      - task: format
+      - npm run test
+
+  lint:
+    desc: Run linter
+    cmds:
+      - npm run lint
+
+  build:
+    desc: Build
+    cmds:
+      - task: clean
+      - npm run build
+
+#  publish:
+#    desc: Publish the package
+#    cmds:
+#      - npm publish
+
+  pre-commit:
+    desc: Runs the QA tasks from a git pre-commit hook
+    cmds:
+      - task: lint
+      - task: test
+
+  install-git-hooks:
+    desc: Install git hooks
+    cmds:
+      - echo -e "#!/bin/bash\ntask pre-commit" > {{.GIT_HOOKS_DIR}}/pre-commit
+      - chmod ug+x {{.GIT_HOOKS_DIR}}/pre-commit
+
+  install:
+    desc: Install the package and its dependencies
+    cmds:
+      - npm install
+      - npm audit fix --force || echo "Install complete"
+      - task: install-git-hooks
+
+  docs:
+    desc: Generate the documentation
+    cmds:
+      - npm run apidoc
+
+  clean:
+    desc: Clean temporary files and folders
+    cmds:
+      - npm run clean

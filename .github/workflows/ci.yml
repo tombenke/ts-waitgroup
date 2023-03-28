@@ -1,0 +1,30 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - "*" # matches every branch
+      - "*/*" # matches every branch containing a single '/'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - name: Set up task tool
+        uses: arduino/setup-task@v1
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup test environment
+        run: task install
+
+      - name: Lint the ts files
+        run: task lint
+
+      - name: Test the ts files
+        run: task test

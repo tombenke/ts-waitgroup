@@ -1,0 +1,63 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "airbnb-base",
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "project": "tsconfig.json",
+    "sourceType": "module"
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-inferrable-types": [
+      "warn",
+      {
+        "ignoreParameters": true
+      }
+    ],
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/no-shadow": "error",
+    "@typescript-eslint/no-unnecessary-type-assertion": "error",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "js": "never"
+      }
+    ],
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
+    "class-methods-use-this": "off",
+    // "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "no-restricted-syntax": "off",
+    "no-shadow": "off",
+    "no-useless-constructor": "off",
+    "require-await": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts", ".json"]
+      }
+    }
+  },
+  "ignorePatterns": [
+    "build/*",
+    "coverage/*",
+    "**/*.d.ts",
+    "**/*.test.ts",
+    "lib/*",
+    "jest.config.js",
+    "jest.setup.ts",
+    "test"
+  ]
+}
